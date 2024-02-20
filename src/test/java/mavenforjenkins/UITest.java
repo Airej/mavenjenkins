@@ -28,7 +28,7 @@ public class UITest {
     private WebDriver initializeDriver(String browserName) {
         WebDriver driver = null;
 
-        if (browserName.contains("Chrome")) {
+        if (browserName.contains("chrome")) {
             ChromeOptions opt = new ChromeOptions();
             opt.addArguments("--headless");
             opt.addArguments("--no-sandbox");
