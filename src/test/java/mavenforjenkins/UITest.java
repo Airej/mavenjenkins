@@ -28,13 +28,22 @@ public class UITest {
         } else if (browserName.contains("Edge")) {
             driver = new EdgeDriver();
         }
-        driver.manage().window().maximize();
+
+        if (driver != null) {
+            driver.manage().window().maximize();
+        } else {
+            throw new IllegalStateException("Driver object is null. Failed to initialize WebDriver.");
+        }
     }
 
     @Test
     public void verifyTitle() {
-        driver.get("https://opensource-demo.orangehrmlive.com/");
-        Assert.assertTrue(driver.getTitle().contains("Orange"), "Title does not match");
+        if (driver != null) {
+            driver.get("https://opensource-demo.orangehrmlive.com/");
+            Assert.assertTrue(driver.getTitle().contains("Orange"), "Title does not match");
+        } else {
+            throw new IllegalStateException("Driver object is null. Cannot execute test.");
+        }
     }
 
     @AfterMethod
